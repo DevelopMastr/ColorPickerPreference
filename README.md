@@ -1,3 +1,5 @@
+![logo](./logotype.png)
+
 Android Color Picker
 ====================
 
