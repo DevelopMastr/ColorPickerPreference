@@ -20,10 +20,6 @@ dependencies {
 ```
 
 
-Screenshots
-===========
-
-<img src='http://lh5.ggpht.com/_ODdyLCCXPpQ/TKsFBMSlhdI/AAAAAAAAu6o/vqpGqyCnywY/s800/r230-ambilwarna.png'>
 
 
 How to use the dialog
