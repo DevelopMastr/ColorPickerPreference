@@ -17,7 +17,7 @@ Android Studio 3.0 and above:
 
 ```groovy
 dependencies {
-    implementation 'com.github.DevelopMastr:ColorPickerPreference:1.0.0'
+    implementation 'com.github.developmastr:colorpickerpreference:1.0.0'
 }
 ```
 
