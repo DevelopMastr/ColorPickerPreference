@@ -3,70 +3,15 @@
 }
 */
 apply plugin: 'maven-publish'
-//apply plugin: 'java-library'
 apply plugin: 'signing'
-/*
-plugins {
-    id 'java-library'
-    id 'maven-publish'
-    id 'signing'
-}
-*/
+
 group = 'com.github.developmastr'
 version = '1.0'
-/*
-java {
-    withJavadocJar()
-    withSourcesJar()
-}*/
-//apply plugin: 'signing'
-/*
-publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId = 'com.github.developmastr'
-            artifactId = 'colorpickerpreference'
-            version = '1.0'
 
-            //from components.java
-        }
-        mavenJava(MavenPublication) {
-            pom {
-                name = 'ColorPickerPreference'
-                description = 'Color Picker Preference'
-                url = 'https://github.com/DevelopMastr/ColorPickerPreference'
-                properties = [
-                        myProp: "value",
-                        "prop.with.dots": "anotherValue"
-                ]
-                licenses {
-                    license {
-                        name = 'The Apache License, Version 2.0'
-                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                    }
-                }
-                developers {
-                    developer {
-                        id = 'DevelopMastr'
-                        name = 'DevelopMastr'
-                        email = 'infodmastr@gmail.com'
-                    }
-                }
-                scm {
-                    url = 'https://github.com/DevelopMastr/ColorPickerPreference'
-                    connection = 'scm:git@github.com:DevelopMastr/ColorPickerPreference.git'
-                    developerConnection = 'scm:git@github.com:DevelopMastr/ColorPickerPreference.git'
-                }
-            }
-        }
-    }
-}
-*/
 publishing {
     publications {
         mavenJava(MavenPublication) {
             artifactId = 'colorpickerpreference'
-            //from components.java
             versionMapping {
                 usage('java-api') {
                     fromResolutionOf('runtimeClasspath')
@@ -118,13 +63,6 @@ signing {
     sign publishing.publications.mavenJava
 }
 
-/*
-javadoc {
-    if(JavaVersion.current().isJava9Compatible()) {
-        options.addBooleanOption('html5', true)
-    }
-}
-*/
 /*
 afterEvaluate { project ->
     project.version = android.defaultConfig.versionName
@@ -203,7 +141,3 @@ afterEvaluate { project ->
 }
 
 */
-java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
-}
