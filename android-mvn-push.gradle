@@ -1,20 +1,141 @@
-if (!(hasProperty("nexusUsername") && hasProperty("nexusPassword"))) {
+/*if (!(hasProperty("nexusUsername") && hasProperty("nexusPassword"))) {
     return;
 }
-
-apply plugin: 'maven'
+*/
+apply plugin: 'maven-publish'
+//apply plugin: 'java-library'
 apply plugin: 'signing'
+/*
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'signing'
+}
+*/
+group = 'com.github.developmastr'
+version = '1.0'
+/*
+java {
+    withJavadocJar()
+    withSourcesJar()
+}*/
+//apply plugin: 'signing'
+/*
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.github.developmastr'
+            artifactId = 'colorpickerpreference'
+            version = '1.0'
 
+            //from components.java
+        }
+        mavenJava(MavenPublication) {
+            pom {
+                name = 'ColorPickerPreference'
+                description = 'Color Picker Preference'
+                url = 'https://github.com/DevelopMastr/ColorPickerPreference'
+                properties = [
+                        myProp: "value",
+                        "prop.with.dots": "anotherValue"
+                ]
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'DevelopMastr'
+                        name = 'DevelopMastr'
+                        email = 'infodmastr@gmail.com'
+                    }
+                }
+                scm {
+                    url = 'https://github.com/DevelopMastr/ColorPickerPreference'
+                    connection = 'scm:git@github.com:DevelopMastr/ColorPickerPreference.git'
+                    developerConnection = 'scm:git@github.com:DevelopMastr/ColorPickerPreference.git'
+                }
+            }
+        }
+    }
+}
+*/
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId = 'colorpickerpreference'
+            //from components.java
+            versionMapping {
+                usage('java-api') {
+                    fromResolutionOf('runtimeClasspath')
+                }
+                usage('java-runtime') {
+                    fromResolutionResult()
+                }
+            }
+            pom {
+                name = 'ColorPickerPreference'
+                description = 'Color Picker Preference'
+                url = 'https://github.com/DevelopMastr/ColorPickerPreference'
+                properties = [
+                        myProp: "value",
+                        "prop.with.dots": "anotherValue"
+                ]
+                licenses {
+                    license {
+                        name = 'The Apache License, Version 2.0'
+                        url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'DevelopMastr'
+                        name = 'DevelopMastr'
+                        email = 'infodmastr@gmail.com'
+                    }
+                }
+                scm {
+                    url = 'https://github.com/DevelopMastr/ColorPickerPreference'
+                    connection = 'scm:git@github.com:DevelopMastr/ColorPickerPreference.git'
+                    developerConnection = 'scm:git@github.com:DevelopMastr/ColorPickerPreference.git'
+                }
+            }
+        }
+    }
+    repositories {
+        maven {
+            // change URLs to point to your repos, e.g. http://my.org/repo
+            def releasesRepoUrl = layout.buildDirectory.dir('repos/releases')
+            def snapshotsRepoUrl = layout.buildDirectory.dir('repos/snapshots')
+            url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+        }
+    }
+}
+
+signing {
+    sign publishing.publications.mavenJava
+}
+
+/*
+javadoc {
+    if(JavaVersion.current().isJava9Compatible()) {
+        options.addBooleanOption('html5', true)
+    }
+}
+*/
+/*
 afterEvaluate { project ->
     project.version = android.defaultConfig.versionName
-    project.group = 'com.github.DevelopMastr'
+    project.group = 'com.github.developMastr'
 
     uploadArchives {
         repositories {
             mavenDeployer {
                 //beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 
-                pom.artifactId = 'ColorPickerPreference'
+                pom.artifactId = 'colorpickerpreference'
 
                 repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
                     authentication(userName: nexusUsername, password: nexusPassword)
@@ -79,4 +200,10 @@ afterEvaluate { project ->
         archives androidSourcesJar
         archives androidJavadocsJar
     }
+}
+
+*/
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
